@@ -1,0 +1,31 @@
+.loginBox{
+    margin: 0px auto !important;
+    padding: 5px;
+    width: 250px;
+    height:40px !important;
+    background-color: #333;
+    border-radius: 0.4em;
+    border: 2px solid #0972A5 !important;
+    color: #F6CF7B !important;
+}
+input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: #F6CF7B;
+    /*padding-left: 10px;*/
+}
+input::-moz-placeholder { /* Firefox 19+ */
+    color: #F6CF7B;
+    /*padding-left: 10px;*/
+}
+#login-button1{
+    background-color: #0972A5;
+    width: 250px;
+    margin: 30px auto;
+}
+#oscarsLogo{
+    width: 100%;
+    position: relative;
+    background-image: url('../img/oscarsName.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 15em;
+}

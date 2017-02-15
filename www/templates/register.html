@@ -1,0 +1,15 @@
+<ion-view title="Login" hide-nav-bar="true" hide-back-button="true" id="page6" style="background-color:#040505;">
+    <ion-content padding="false" scroll="false" class="has-header">
+        <div id="oscarsLogo"></div>
+        <form id="login-form1" class="list">
+            <div class="spacer" style="width: 300px; height: 30px;"></div>
+            <ion-list id="login-list1">
+                <input class="loginBox" type="text" placeholder="Username" ng-model="user.username" autocomplete="off" required>
+                <input class="loginBox" type="email" placeholder="Email" ng-model="user.email" autocomplete="off" required>
+                <input class="loginBox" type="password" placeholder="Password" ng-model="user.password" autocomplete="off" required>
+            </ion-list>
+            <a id="login-button1" class="button button-royal  button-block" ng-click="register(user)">Sign up</a>
+            <a ui-sref="login" id="login-button2" style="color:#E3EC11;" class="button button-calm  button-block button-clear">Already have an account? <strong>Log in!</strong></a>
+        </form>
+    </ion-content>
+</ion-view>
