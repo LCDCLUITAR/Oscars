@@ -1,0 +1,17 @@
+<ion-view title="Leaderboards" hide-nav-bar="true" id="page4">
+    <ion-header-bar align-title="center" class="bar-gold">
+        <h1 class="title"><img class="title-image" src="img/oscarsName.png" width="123" height="43" /></h1>
+        <button class="button-cog"><i class="fa fa-lg fa-cog" style="color:aliceblue;" aria-hidden="true"></i></button>
+    </ion-header-bar>
+    <ion-pane style="background-color: #000; margin-bottom: 3em;">
+        <div style="margin-top: 3em;">
+            <div class="button button-royal button-block">Button 1</div>
+        </div>
+        <div class="list">
+            <label class="item item-input">
+                <input type="text" placeholder="Add a category" ng-model="category">
+            </label>
+            <div class="button button-royal button-block" ng-click="addToDB(category)">Add to DB</div>
+        </div>
+    </ion-pane>
+</ion-view>

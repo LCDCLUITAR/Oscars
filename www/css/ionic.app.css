@@ -4500,7 +4500,8 @@ a.subdued {
   top: 4%; }
 
 .tabs-striped.tabs-stable .tabs {
-  background-color: #000; }
+  background-color: #000;
+  border-top: 1px solid aliceblue;}
 
 .tabs-striped.tabs-stable .tab-item {
   color: #a19c9c;
@@ -5540,6 +5541,8 @@ ion-tabs.tabs-striped.tabs-color-active-dark .tab-item.tab-item-active, ion-tabs
     -webkit-animation-fill-mode: both;
     animation-fill-mode: both; }
   .popup-container.active .popup {
+      border-radius: 0.6em;
+      border: 2px solid #d4b74b;
     -webkit-animation-name: superScaleIn;
     animation-name: superScaleIn;
     -webkit-animation-duration: 0.2s;
@@ -9430,7 +9433,7 @@ a.button {
  * --------------------------------------------------
  */
 .padding {
-  padding: 10px; }
+/*padding: 10px; */}
 
 .padding-top,
 .padding-vertical {

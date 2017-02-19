@@ -1,6 +1,6 @@
 angular.module('app.services', ['firebase'])
 
-.factory('authService', ['$state', '$firebaseAuth', function ($state, $firebaseAuth){
+.factory('authService', ['$state', '$firebaseAuth', '$ionicPopup', function ($state, $firebaseAuth, $ionicPopup){
     var firebaseAuth = $firebaseAuth();
     var logged = false;
     var currUser = {};
@@ -32,7 +32,13 @@ angular.module('app.services', ['firebase'])
             });
             $state.go('tabsController.contest');
         }).catch(function(error){
-            console.log(error.code + " - " + error.message);
+            console.log(`Error(${error.code}): ${error.message}`);
+            if(error.code == "auth/user-not-found"){
+                var alertPopup = $ionicPopup.alert({
+                    title: 'ERROR',
+                    template: 'The user does not exist.'
+                });
+            }
         });
     }
     authService.createUser = function(user){
@@ -80,8 +86,4 @@ angular.module('app.services', ['firebase'])
     }
 
     return authService;
-}])
-
-.service('BlankService', [function(){
-
 }]);

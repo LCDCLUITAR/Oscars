@@ -1,10 +1,32 @@
-<ion-view title="MY PREDICTIONS" id="page3">
-  <ion-content padding="true" class="has-header">
-    <form id="mYPREDICTIONS-form1" class="list">
-      <label class="item item-select" id="mYPREDICTIONS-select1" name="categories">
-        <span class="input-label">Select</span>
-        <select></select>
-      </label>
-    </form>
-  </ion-content>
+<ion-view title="TPredictions" hide-nav-bar="true" id="page2">
+    <ion-header-bar align-title="center" class="bar-gold">
+        <h1 class="title"><img class="title-image" src="img/oscarsName.png" width="123" height="43" /></h1>
+        <button class="button-cog"><i class="fa fa-lg fa-cog" style="color:aliceblue;" aria-hidden="true"></i></button>
+    </ion-header-bar>
+    <ion-pane style="background-color: #000;">
+        <ion-slides  options="options" slider="data.slider" delegate-handle="predictions">
+            <ion-slide-page ng-repeat="categs in categories">
+                <div id="buttonCategory" class="btnPredict button-dark  button-block" style="border:none;">
+                    <div class="clapboard"><div class="square-clapboard col-xs-2" ng-repeat="i in [1,2,3,4,5,6]"></div></div>
+                    <div class="clapboard"><div class="square-clapboard col-xs-2" ng-repeat="i in [1,2,3,4,5,6]"></div></div>
+                    <div id="category-cover">{{categs}}</div>
+                    <select ng-model="categorySelected" ng-change="goToSlide(categorySelected)">
+                        <option ng-repeat="category in categories" ng-hide="categs == category">{{category}}</option>
+                    </select>
+                </div>
+                <div class="col-xs-12 navigation">
+                    <div id="buttonCategory2" class="button-dark col-xs-4 prev" ng-class="{'blackout': $index == 0}" ng-click=""><i class="fa fa-lg fa-chevron-left" aria-hidden="true"></i>&nbsp; Prev</div>
+                    <div id="buttonCategory2" class="button-dark col-xs-4" style="padding: 1px 0 4px 0;">{{"Points: 20"}}</div>
+                    <div id="buttonCategory2" class="button-dark col-xs-4 next" ng-class="{'blackout': $index == 23}" ng-click="">Next &nbsp;<i class="fa fa-lg fa-chevron-right" aria-hidden="true"></i></div>
+                </div>
+                <div id="options-box">
+                    <div class="category-answer category-prediction col-xs-4" ng-class="{'border-left-bottom': $index%3 != 0, 'border-top': $index > 2, 'correct-pick': userPick[$parent.$index][$index]}" ng-click="toggleSelection($index, $parent.$index)" ng-repeat="nominee in nominees[$parent.$index]">
+                        <div class="star-icon"></div>
+                        {{nominee}}
+                    </div>
+                </div>
+                <div id="view-prediction" class="button button-royal" ng-click="myPredictions()"> View my predictions ({{2}})</div>
+            </ion-slide-page>
+        </ion-slides>
+    </ion-pane>
 </ion-view>

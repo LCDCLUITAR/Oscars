@@ -39,6 +39,25 @@ angular.module('app.routes', [])
       }
     }
   })
+  .state('tabsController.friends', {
+      url: '/friends',
+      views: {
+        'tab5': {
+          templateUrl: 'templates/friends.html',
+          controller: 'friendsCtrl'
+        }
+      }
+    })
+
+    .state('tabsController.manager', {
+        url: '/manager',
+        views: {
+          'tab5': {
+            templateUrl: 'templates/manager.html',
+            controller: 'managerCtrl'
+          }
+        }
+    })
 
   .state('tabsController', {
     url: '/page1',

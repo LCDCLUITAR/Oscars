@@ -1,5 +1,48 @@
-<ion-view title="The Contest" id="page2" style="background-color:#333333;">
-    <ion-content padding="true" class="has-header">
-        
-    </ion-content>
+<ion-view title="The Contest" hide-nav-bar="true" id="page2">
+    <ion-header-bar align-title="center" class="bar-gold">
+        <button class="blackout" ng-click="accessManager()"><i class="fa fa-lg fa-cog" aria-hidden="true"></i></button>
+        <h1 class="title"><img class="title-image" src="img/oscarsName.png" width="123" height="43" /></h1>
+        <button class="button-cog"><i class="fa fa-lg fa-cog" style="color:aliceblue;" aria-hidden="true"></i></button>
+    </ion-header-bar>
+    <ion-pane style="background-color: #000;">
+        <ion-slides  options="options" slider="data.slider" ng-if="counterUntilOscars()">
+            <ion-slide-page ng-repeat="categs in categories">
+                <div id="buttonCategory" class="button-dark  button-block" style="border:none;" ng-click="">{{categs.name}}</div>
+                <div class="col-xs-12">
+                    <div id="buttonCategory2" class="button-dark col-xs-4 prev" ng-class="{'blackout': $index == 0}" ng-click=""><i class="fa fa-lg fa-chevron-left" aria-hidden="true"></i>&nbsp; Prev</div>
+                    <div id="buttonCategory2" class="button-dark col-xs-4" style="padding: 1px 0 4px 0;">{{"Points: 20"}}</div>
+                    <div id="buttonCategory2" class="button-dark col-xs-4 next" ng-class="{'blackout': $index == 23}" ng-click="">Next &nbsp;<i class="fa fa-lg fa-chevron-right" aria-hidden="true"></i></div>
+                </div>
+                <div id="options-box">
+                    <div class="category-answer col-xs-4" ng-class="{'border-left-bottom': $index%3 != 0, 'border-top': $index > 2, 'correct-pick': $index == answer, 'user-pick': $index == userPick }" ng-repeat="nominee in nominees[$parent.$index]">
+                        <div class="star-icon" ng-class="{'oscar-icon': $index == answer, 'x-icon': $index == userPick}"></div>
+                        {{nominee}}
+                    </div>
+                </div>
+                <div class="user-points text-center">
+                    Your Points: <span style="color:aliceblue;">250</span>
+                </div>
+                <hr />
+                <div class="top-three">
+                    <h3 class="title text-center">Top Three</h3>
+                    <div class="top col-xs-4 text-center" ng-repeat="i in [1,2,3]">
+                        <img class="round-photo" src="img/jalapeno.png" />
+                        <div class="user-name text-center">Luis Daniel Chaparro</div>
+                        <div class="points">2540</div>
+                    </div>
+                </div>
+            </ion-slide-page>
+        </ion-slides>
+        <!-- counterUntilOscars-->
+        <div id="timer">
+            <div class="countdown">
+                <div class="clapboard rotate-clapboard"><div class="square-clapboard col-xs-2" ng-repeat="i in [1,2,3,4,5,6]"></div></div>
+                <div class="clapboard"><div class="square-clapboard col-xs-2" ng-repeat="i in [1,2,3,4,5,6]"></div></div>
+                <div class="blackout" style="color: aliceblue !important;">
+                    The Oscars will start in...<br />
+                    <span countdown='' date='February 26, 2017 19:30:00'>&nbsp;</span>
+                </div>
+            </div>
+        </div>
+    </ion-pane>
 </ion-view>

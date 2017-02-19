@@ -29,3 +29,269 @@ input::-moz-placeholder { /* Firefox 19+ */
     background-size: contain;
     height: 15em;
 }
+.popup{
+    border-radius: 0.4em;
+}
+.popup-body span{
+    color: #000 !important;
+}
+
+#buttonCategory, #buttonCategory2{
+    margin-top: 40px;
+    border-bottom: 2px solid #0972A5;
+    font-size: 16px;
+    text-align: center;
+    padding-top: 10px;
+    color: #e4a110;
+}
+#buttonCategory2{
+    margin-top: 0px !important;
+    padding: 1px 0 5px 0;
+    color: aliceblue;
+}
+.prev, .next{
+    font-size: 10px !important;
+    padding-top: 9px !important;
+}
+.prev{
+    text-align: left !important;
+    padding-left: 20px !important;
+}
+.next{
+    text-align: right !important;
+    padding-right: 20px !important;
+}
+#options-box{
+    min-height: 25em;
+    max-height: 30em;
+    height: auto;
+    width: 100%;
+    /*padding: 10px;*/
+    margin: 0px 0;
+    position: relative;
+    text-align: center;
+    font-size: 11px;
+}
+.category-answer{
+    /*border-bottom: 1px solid #e4a110;*/
+    padding: 0px 5px 5px 10px !important;
+    /*border-radius: 0.4em;*/
+    min-height: 8em !important;
+    height: auto;
+    color: aliceblue;
+    vertical-align: middle;
+    background-color: #000;
+}
+
+.border-left-bottom{
+    border-left: 1px solid #5c4618;
+}
+
+.border-top{
+    border-top: 1px solid #5c4618;
+}
+
+.col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5,
+.col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-md-1, .col-md-10, .col-md-11, .col-md-12,
+.col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9,
+.col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5,
+.col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12,
+.col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9{
+    padding: 0px;
+}
+ #page2{
+     /*background: url('../img/carpet.jpg');
+     background-repeat: no-repeat;
+     background-position: 70%;
+     background-size: cover;*/
+     background-color: #000;
+}
+
+.star-icon{
+    width: 100%;
+    height: 30px;
+    margin: 6px 0 4px 0;
+    background-image: url('../img/staricon.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+.x-icon{
+   width: 100%;
+   height: 30px;
+   margin: 6px 0 4px 0;
+   background-image: url('../img/x-icon.png');
+   background-repeat: no-repeat;
+   background-position: center;
+   background-size: contain;
+}
+.oscar-icon{
+   width: 100%;
+   height: 30px;
+   margin: 6px 0 4px 0;
+   background-image: url('../img/oscars-icon.png');
+   background-repeat: no-repeat;
+   background-position: center;
+   background-size: contain;
+}
+.user-pick{
+    background-color: #525c65;
+}
+.correct-pick{
+    background-color: #0972A5;
+}
+.user-points{
+     margin-top: 10px;
+     color: #0972C8;
+     font-size: 16px;
+     font-weight: 500;
+     display: inline-block;
+     width: 100%;
+ }
+.top-three .title{
+    color: aliceblue;
+    font-size: 16;
+}
+.top-three{
+    position: absolute;
+    color: #e4a110;
+    font-size: 10px;
+    font-weight: 500;
+}
+.top-three .user-name{
+    padding: 0 20px;
+}
+.top-three .points{
+    color: aliceblue;
+    margin-top: 5px;
+    font-size: 9px;
+}
+hr {
+    border-top: 0.3px solid #454242 !important;
+    margin-top: 5px;
+    margin-bottom: 8px;
+}
+.round-photo{
+    border-radius: 50%;
+    width: 60px !important;
+    height: 60px !important;
+    margin-bottom: 10px;
+}
+.bar-gold{
+    background-color: #000;
+}
+.button-cog {
+    position: absolute;
+    top: 8px;
+    right: 5px;
+    bottom: 8px;
+    background-color: #000;
+    border-color: #000;
+}
+.fa-cog{
+    position: relative;
+    right: 0;
+    height: 100%;
+    font-size: 30px;
+    display: inline-block;
+}
+.blackout{
+    background-color: #000;
+    color: #000 !important;
+}
+.btnPredict{
+    margin-top: 2.8em !important;
+    color: aliceblue !important;
+    position: relative !important;
+    text-align: left !important;
+    padding: 10px !important;
+    background-image: url('../img/carpet.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 75%;
+    height: 8em;
+}
+.btnPredict select{
+    border-radius: 0.4em;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border: 1px solid aliceblue;
+    width: 100%;
+    background-color: #000;
+    height: 70%;
+}
+.btn-remove-margin-top{
+    margin-top: 2px !important;
+}
+.clapboard{
+    background-color: white;
+    height: 14px;
+    border: 1px solid aliceblue;
+}
+.clapboard:nth-child(1){
+    border-bottom: 1px solid black;
+}
+.clapboard:nth-child(2){
+    border-top: none;
+}
+.square-clapboard:nth-child(2n + 1){
+    height: 100%;
+    background-color: black;
+}
+#view-prediction{
+    border: 2px solid aliceblue;
+    border-bottom: none;
+    width: 100%;
+    position: absolute;
+    bottom: 49px;
+    left: 0;
+    background-image: url('../img/carpet.jpg');
+    background-repeat: no-repeat;
+    background-position: bottom;
+    margin: 0 auto;
+}
+#timer{
+    display: block;
+    padding-top: 3em;
+    color: aliceblue;
+    font-size: 25px;
+    text-align: center;
+    border: 2px solid red;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url('../img/carpet.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 70%;
+}
+.countdown{
+    sbackground-color: transparent;
+    /*background-color: #000;*/
+    /*border: 1px solid aliceblue;*/
+    margin: 40% auto;
+    width: 80%;
+}
+.countdown .clapboard{
+    height: 26px;
+    border: 1px solid aliceblue;
+}
+.countdown .blackout{
+    border: 1px solid aliceblue;
+}
+.rotate-clapboard{
+    -webkit-transform: rotate(-250deg) !important; /* Safari */
+    transform: rotate(-5deg) !important;
+    margin-bottom: 15px;
+}
+#category-cover{
+    position: absolute;
+    /*border: 2px solid red;*/
+    width: calc(100% - 45px);
+    height: calc(60% - 20px);
+    text-align: center;
+    background-color: #000;
+    font-size: 20px;
+    margin: 9px 20px 20px 1px;
+    pointer-events: none;
+}
