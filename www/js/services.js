@@ -6,17 +6,55 @@ angular.module('app.services', ['firebase'])
     var currUser = {};
     var authService = {};
 
+    function updateUserInfo(){
+        firebase.auth().onAuthStateChanged(function(userInfo) {
+            if (userInfo){
+                firebase.database().ref('users/'+userInfo.uid).on('child_changed',function(snap){
+                    currUser.username       = userInfo.displayName;
+                    currUser.email          = userInfo.email;
+                    currUser.uid            = userInfo.uid;
+                    if(userInfo.photoURL){ currUser.photo = userInfo.photoURL; }
+                    else { currUser.photo      = "img/default.png"; }
+                    currUser.points         = snap.val().points;
+                    currUser.predictions    = snap.val().predictions;
+                    //console.log("Updating");
+                });
+            }
+        });
+    }
+    authService.forceUpdate = function(){
+        updateUserInfo();
+    }
+    authService.setUserInfo = function(photo, name, email){
+        if(photo != -1){
+            currUser.photo = photo;
+            //console.log(currUser.photo);
+        }
+        if(name != -1){
+            currUser.username = name;
+        }
+        if(email != -1){
+            currUser.email = email;
+        }
+    }
     authService.getUser = function(){
+        //console.log(currUser);
         return currUser;
     }
     authService.checkLogin = function(){
         firebase.auth().onAuthStateChanged(function(userInfo) {
             if (userInfo){
-                currUser.username = userInfo.displayName;
-                currUser.email    = userInfo.email;
-                currUser.uid      = userInfo.uid;
-                //console.log(currUser);
-                $state.go('tabsController.contest');
+                firebase.database().ref('users/'+userInfo.uid).once('value',function(snap){
+                    currUser.username       = userInfo.displayName;
+                    currUser.email          = userInfo.email;
+                    currUser.uid            = userInfo.uid;
+                    if(userInfo.photoURL){ currUser.photo = userInfo.photoURL; }
+                    else { currUser.photo      = "img/default.png"; }
+                    currUser.points         = snap.val().points;
+                    currUser.predictions    = snap.val().predictions;
+                    //console.log(currUser);
+                    $state.go('tabsController.contest');
+                });
             }
         });
     }
@@ -24,13 +62,15 @@ angular.module('app.services', ['firebase'])
         firebaseAuth.$signInWithEmailAndPassword(user.email, user.password).then(function(userInfo){
             // If no error
             logged = true;
-            firebase.database().ref('users/'+userInfo.uid).on('value',function(snap){
+            firebase.database().ref('users/'+userInfo.uid).once('value',function(snap){
                 currUser.username       = userInfo.displayName;
+                currUser.photo          = userInfo.photoURL;
                 currUser.email          = userInfo.email;
                 currUser.uid            = userInfo.uid;
-                //console.log(currUser);
+                currUser.predictions    = snap.val().predictions;
+                currUser.points         = snap.val().points;
+                $state.go('tabsController.contest');
             });
-            $state.go('tabsController.contest');
         }).catch(function(error){
             console.log(`Error(${error.code}): ${error.message}`);
             if(error.code == "auth/user-not-found"){
@@ -45,7 +85,10 @@ angular.module('app.services', ['firebase'])
         if(user.username != null && user.email != null && user.password != null){
             firebaseAuth.$createUserWithEmailAndPassword(user.email, user.password).then(function(){
                 var userInfo = firebaseAuth.$getAuth();
-                firebase.database().ref('users/'+userInfo.uid+'/predictions').set('None');
+                firebase.database().ref('users/'+userInfo.uid+'/predictions').set(false);
+                firebase.database().ref('users/'+userInfo.uid+'/points').set(0);
+                firebase.database().ref('users/'+userInfo.uid+'/displayName').set(user.username);
+                firebase.database().ref('users/'+userInfo.uid+'/photoURL').set("img/default.png");
 
                 userInfo.updateProfile({
                     displayName: user.username,
@@ -86,4 +129,25 @@ angular.module('app.services', ['firebase'])
     }
 
     return authService;
+}])
+
+.factory('globals', ['$state', '$firebaseAuth', '$ionicPopup', function ($state, $firebaseAuth, $ionicPopup){
+    var categories = [];
+    var globalService = {};
+    var eventStarted = false;
+
+    globalService.getcategories = function(){
+        return categories;
+    }
+    globalService.setcategories = function(){
+        //set categories from db here
+    }
+    globalService.setEventStart = function(ifStarted){
+        eventStarted = ifStarted;
+    }
+    globalService.getEventStart = function(){
+        return eventStarted;
+    }
+
+    return globalService;
 }]);

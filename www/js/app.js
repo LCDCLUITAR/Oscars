@@ -18,6 +18,21 @@ angular.module('app', ['ionic', 'firebase', 'app.controllers', 'app.routes', 'ap
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
+
+    if(ionic.Platform.isAndroid()){
+      window.addEventListener('native.keyboardshow', keyboardShowHandler);
+      window.addEventListener('native.keyboardhide', keyboardHideHandler);
+
+      function keyboardShowHandler(e){
+         //console.log("Show Keyboard");
+         window.scrollTo(0,0);
+      }
+
+      function keyboardHideHandler(e){
+          //console.log("Hide Keyboard");
+      }
+   }
+
     if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
       cordova.plugins.Keyboard.disableScroll(false);
@@ -88,10 +103,16 @@ angular.module('app', ['ionic', 'firebase', 'app.controllers', 'app.routes', 'ap
             scope: { date: '@' },
             link: function (scope, element) {
                 var future;
+                var promise;
+                var diff;
                 future = new Date(scope.date);
-                $interval(function () {
-                    var diff;
-                    diff = Math.floor((future.getTime() - new Date().getTime()) / 1000);
+
+                promise = $interval(function () {
+                    if(diff <= 0){
+                        //console.log("Cancel Promise");
+                        $interval.cancel(promise);
+                    }
+                    diff = Math.floor(future.getTime()/1000 - new Date().getTime()/1000);
                     return element.text(Util.dhms(diff));
                 }, 1000);
             }

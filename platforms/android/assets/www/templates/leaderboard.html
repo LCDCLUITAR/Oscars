@@ -1,3 +1,21 @@
-<ion-view title="Leaderboard" id="page4">
-  <ion-content padding="true" class="has-header"></ion-content>
+<ion-view title="Leaderboards" hide-nav-bar="true" id="page4">
+    <ion-header-bar align-title="center" class="bar-gold">
+        <button class="roundPic" ng-style="{'background-image': 'url(' + userPhotoURL.photo + ')'}"></button>
+        <h1 class="title"><img class="title-image" src="img/oscarsName.png" width="123" height="43" /></h1>
+        <button class="button-cog"><i class="fa fa-lg fa-cog" style="color:aliceblue;" aria-hidden="true"></i></button>
+    </ion-header-bar>
+    <ion-pane style="background-color: #000; margin-top: 3em;">
+        <ion-list id="page-list1">
+            <ion-item class="item-avatar item-icon-right energized" id="page-list-item2" ng-repeat="top in topThree">
+                <img id="leaderboardPics" ng-src="{{top.photo}}">
+                <h2energized>{{top.name}}
+                    <p>{{top.points}} Points</p>
+                    <div id="rankNumber">
+                        # {{$index+1}}
+                    </div>
+                    <ion-option-button class="button-positive">Add Friend</ion-option-button>
+                </h2energized>
+            </ion-item>
+        </ion-list>
+    </ion-pane>
 </ion-view>

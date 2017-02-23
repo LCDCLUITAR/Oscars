@@ -1,0 +1,26 @@
+
+<ion-view title="Settings" hide-nav-bar="true" id="page4">
+    <ion-header-bar align-title="center" class="bar-gold">
+        <button ui-sref="tabsController.contest" class="button-back"><i class="fa fa-lg fa-arrow-left" style="color:aliceblue;" aria-hidden="true"></i></button>
+        <h1 class="title"><img class="title-image" src="img/oscarsName.png" width="123" height="43" /></h1>
+        <button class="button-cog"><i class="fa fa-lg fa-cog" style="color:aliceblue;" aria-hidden="true"></i></button>
+    </ion-header-bar>
+    <ion-pane style="background-color: #000;">
+        <form id="page-form3" class="list">
+            <input id="fileUplaod" ng-model="photoFile" type="file" style="display:none;" onchange="angular.element(this).scope().profilePictureSelected(this)"/>
+            <ion-item class="item-avatar" id="page-list-item1">
+                <img ng-src="{{userPhotoURL}}" ng-click="fileChanged()"/>
+                <h2>Upload a picture</h2>
+            </ion-item>
+            <div class="spacer" style="height: 100px;"></div>
+            <label class="item item-input" id="page-input3">
+                <input type="text" placeholder="Change your name" ng-model="data.name">
+            </label>
+            <label class="item item-input" id="page-input4">
+                <input type="number" placeholder="Change your Phone #" ng-model="data.phone">
+            </label>
+        </form>
+        <div class="spacer" style="height: 100px;"></div>
+        <button id="page-button3" style="position: absolute; bottom: 0;" ng-click="update(data)" class="button button-positive  button-block">Update</button>
+    </ion-pane>
+</ion-view>

@@ -30,6 +30,12 @@ angular.module('app.routes', [])
     }
   })
 
+  .state('settings', {
+        url: '/settings',
+        templateUrl: 'templates/settings.html',
+        controller: 'settingsCtrl'
+  })
+
   .state('tabsController.leaderboard', {
     url: '/leaderboard',
     views: {
@@ -40,19 +46,43 @@ angular.module('app.routes', [])
     }
   })
 
+    .state('tabsController.manager', {
+        url: '/manager',
+        views: {
+          'tab5': {
+            templateUrl: 'templates/manager.html',
+            controller: 'managerCtrl'
+          }
+        }
+    })
+
   .state('tabsController', {
     url: '/page1',
     templateUrl: 'templates/tabsController.html',
+    controller: 'generalCtrl',
     abstract:true
   })
 
+  .state('login', {
+    url: '/login',
+    templateUrl: 'templates/login.html',
+    controller: 'loginCtrl'
+  })
+
+  .state('register', {
+    url: '/register',
+    templateUrl: 'templates/register.html',
+    controller: 'registerCtrl'
+  })
+
   .state('landing', {
+    cache: false,
     url: '/landing',
     templateUrl: 'templates/landing.html',
     controller: 'landingCtrl'
   })
 
-$urlRouterProvider.otherwise('/page1/contest')
+$urlRouterProvider.otherwise('/landing')
 
 
 
